@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Game</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="home.css">
 	<script type="text/javascript">
 		function autoResize(id){
 			document.getElementById(id).height = "";
@@ -22,15 +22,24 @@
 		}
 	</script>
 </head>
+
 <body>
-	<h1>Game</h1>
-	<ul>
-		<li><a href="breakout\breakout.html" target="content">Breakout</a></li>
-		<li><a href="snake\snake.html" target="content">Snake</a></li>
-		<li><a href="tetris\tetris.html" target="content">Tetris</a></li>
-	</ul>
-	<div>
-		<iframe id="content" name="content" marginheight="0" frameborder="0" onload="autoResize(this.id);"></iframe>
+	<header>
+		<h1>Game</h1>
+	</header>
+	<div class="mainbody">
+		<div class="col1">
+			<div>
+				<iframe id="content" name="content" marginheight="0" frameborder="0" onload="autoResize(this.id);"></iframe>
+			</div>
+		</div>
+		<div class="col2">
+			<ul>
+				<li><a href="breakout\breakout.html" target="content">Breakout</a></li>
+				<li><a href="snake\snake.html" target="content">Snake</a></li>
+				<li><a href="tetris\tetris.html" target="content">Tetris</a></li>
+			</ul>
+		</div>
 	</div>
 </body>
 </html>
