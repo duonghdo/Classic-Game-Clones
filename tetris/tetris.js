@@ -553,7 +553,7 @@ function keyPressed(){
 		// 	if(!((frameCount % speed) == 0) && current.y > 0){
 		// 		move("bottom");
 		// 	}
-		} break;
+		// } break;
 
 		case 80:{		// p
 			if (gameState == 1) gameState = 2;

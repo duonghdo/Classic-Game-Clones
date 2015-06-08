@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Game</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript">
+		function autoResize(id){
+			document.getElementById(id).height = "";
+			document.getElementById(id).width = "";
+
+			var height;
+			var width;
+
+			if(document.getElementById){
+				height = document.getElementById(id).contentWindow.document.body.scrollHeight + 150;
+				width = document.getElementById(id).contentWindow.document.body.scrollWidth + 35;
+			}
+
+			document.getElementById(id).height = height + "px";
+			document.getElementById(id).width = width + "px";
+		}
+	</script>
+</head>
+<body>
+	<h1>Game</h1>
+	<ul>
+		<li><a href="breakout\breakout.html" target="content">Breakout</a></li>
+		<li><a href="snake\snake.html" target="content">Snake</a></li>
+		<li><a href="tetris\tetris.html" target="content">Tetris</a></li>
+	</ul>
+	<div>
+		<iframe id="content" name="content" marginheight="0" frameborder="0" onload="autoResize(this.id);"></iframe>
+	</div>
+</body>
+</html>
