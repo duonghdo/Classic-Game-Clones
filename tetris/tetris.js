@@ -88,6 +88,7 @@ function PlayScreen(){
 	textSize(25);
 	textAlign(LEFT);
 	// text("Space - place piece", 380, 560);
+	text("S - store piece", 380, 560);
 	text("P - pause", 380, 590);
 	text("Q - end current game", 380, 620);
 	text("Next:", 380, 200);
@@ -441,7 +442,6 @@ function move(dir){
 		current.rotate = moveCheck.rotate;
 	}
 }
-
 
 // update board where pieces have landed, check for full lines
 function updateBoard(){
