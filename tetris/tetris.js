@@ -88,11 +88,11 @@ function PlayScreen(){
 	textSize(25);
 	textAlign(LEFT);
 	// text("Space - place piece", 380, 560);
-	text("S - store piece", 380, 560);
+	text("H - hold piece", 380, 560);
 	text("P - pause", 380, 590);
 	text("Q - end current game", 380, 620);
 	text("Next:", 380, 200);
-	text("Stored:", 380, 350);
+	text("Hold:", 380, 350);
 	textSize(35);
 	text("Score: " + score, 380, 80);
 	drawKey();
@@ -127,7 +127,7 @@ function PauseScreen(){
 	textSize(30);
 	fill(150);
 	stroke(150);
-	text("Press p to resume", canvasWidth/2, canvasHeight/2);
+	text("Press P to resume", canvasWidth/2, canvasHeight/2);
 }
 
 function EndScreen(){
@@ -138,7 +138,7 @@ function EndScreen(){
 	stroke(100);
 	text("Score " + score, canvasWidth/2, canvasHeight/2-30);
 	textSize(30);
-	text("Press r to return to menu", canvasWidth/2, canvasHeight/2+20);
+	text("Press R to return to menu", canvasWidth/2, canvasHeight/2+20);
 	drawBorder();
 }
 
@@ -353,11 +353,7 @@ function move(dir){
 			moveCheck.x--;
 			moveCheck.update();
 			for(var i = 0; i <moveCheck.loc.length; i++){
-				if(moveCheck.loc[i][0] < 0) {
-					moveValid = false;
-					break;
-				}
-				if(board[moveCheck.loc[i][0]][moveCheck.loc[i][1]] == 1) {
+				if((moveCheck.loc[i][0] < 0) || (board[moveCheck.loc[i][0]][moveCheck.loc[i][1]] == 1)){
 					moveValid = false;
 					break;
 				}
@@ -368,11 +364,7 @@ function move(dir){
 			moveCheck.x++;
 			moveCheck.update();
 			for(var i = 0; i <moveCheck.loc.length; i++){
-				if(moveCheck.loc[i][0] >= boardx) {
-					moveValid = false;
-					break;
-				}
-				if(board[moveCheck.loc[i][0]][moveCheck.loc[i][1]] == 1) {
+				if((moveCheck.loc[i][0] >= boardx) || (board[moveCheck.loc[i][0]][moveCheck.loc[i][1]] == 1)) {
 					moveValid = false;
 					break;
 				}
@@ -383,19 +375,8 @@ function move(dir){
 			moveCheck.rotate = (moveCheck.rotate + 1) % 4;
 			moveCheck.update();
 			for(var i = 0; i <moveCheck.loc.length; i++){
-				if(moveCheck.loc[i][0] < 0) {
-					moveValid = false;
-					break;
-				}
-				if(moveCheck.loc[i][0] >= boardx) {
-					moveValid = false;
-					break;
-				}
-				if(moveCheck.loc[i][1] >= boardy) {
-					moveValid = false;
-					break;
-				}
-				if(board[moveCheck.loc[i][0]][moveCheck.loc[i][1]] == 1) {
+				if((moveCheck.loc[i][0] < 0) || (moveCheck.loc[i][0] >= boardx)
+					|| (moveCheck.loc[i][1] >= boardy) || (board[moveCheck.loc[i][0]][moveCheck.loc[i][1]] == 1)){
 					moveValid = false;
 					break;
 				}
@@ -406,11 +387,7 @@ function move(dir){
 			moveCheck.y++;
 			moveCheck.update();
 			for(var i = 0; i <moveCheck.loc.length; i++){
-				if(moveCheck.loc[i][1] >= boardy) {
-					moveValid = false;
-					break;
-				}
-				if(board[moveCheck.loc[i][0]][moveCheck.loc[i][1]] == 1) {
+				if( (moveCheck.loc[i][1] >= boardy) || (board[moveCheck.loc[i][0]][moveCheck.loc[i][1]] == 1)) {
 					moveValid = false;
 					break;
 				}
@@ -418,22 +395,18 @@ function move(dir){
 		} break;
 
 		// case "bottom":{
-		// 	var canGoDown = true;
-		// 	while(canGoDown){
-		// 		moveCheck.y++;
-		// 		moveCheck.update();
-		// 		for(var i = 0; i <moveCheck.loc.length; i++){
-		// 			if(moveCheck.loc[i][1] >= boardy) {
-		// 				canGoDown = false;
-		// 				break;
-		// 			}
-		// 			if(board[moveCheck.loc[i][0]][moveCheck.loc[i][1]] == 1) {
-		// 				canGoDown = false;
-		// 				break;
-		// 			}
-		// 		}
-		// 	}
-		// 	moveCheck.y--;
+			// var canGoDown = true;
+			// while(canGoDown){
+				// moveCheck.y++;
+				// moveCheck.update();
+				// for(var i = 0; i <moveCheck.loc.length; i++){
+					// if((moveCheck.loc[i][1] >= boardy) || (board[moveCheck.loc[i][0]][moveCheck.loc[i][1]] == 1)) {
+						// moveCheck.y--;
+						// canGoDown = false;
+						// break;
+					// }
+				// }
+			// }
 		// }
 	}
 	if(moveValid) {
@@ -535,24 +508,28 @@ function drawBorder(){
 // handle key input
 function keyPressed(){
 	switch(keyCode){
+		case 87: 		// w
 		case UP_ARROW:{
 			move("up");
 		} break;
+		case 83: 		// s
 		case DOWN_ARROW:{
 			if(!((frameCount % speed) == 0)){
 				move("down");
 			}
 		} break;
+		case 65: 		// a
 		case LEFT_ARROW:{
 			move("left");
 		} break;
+		case 68: 		// d
 		case RIGHT_ARROW:{
 			move("right");
 		} break;
 		// case 32:{			// space
-		// 	if(!((frameCount % speed) == 0) && current.y > 0){
-		// 		move("bottom");
-		// 	}
+			// if(!((frameCount % speed) == 0) && current.y > 0){
+				// move("bottom");
+			// }
 		// } break;
 
 		case 80:{		// p
@@ -566,7 +543,7 @@ function keyPressed(){
 		case 82:{		// r
 			if(gameState == 3) gameState = 0;
 		} break;
-		case 83:{
+		case 72:{		// h
 			if(storedEmpty) firstStored();
 			else {
 				storedPiece();
