@@ -1,9 +1,35 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Game</title>
-	<link rel="stylesheet" href="home.css">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1>Game</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation"><a href="breakout/breakout.html" target="content">Breakout</a></li>
+					<li role="presentation"><a href="snake/snake.html" target="content">Snake</a></li>
+					<li role="presentation"><a href="tetris/tetris.html" target="content">Tetris</a></li>
+				</ul>
+			</div>
+			<div class="col-md10">
+				<div>
+					<iframe id="content" name="content" marginheight="0" frameborder="0" onload="autoResize(this.id);"></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		function autoResize(id){
 			document.getElementById(id).height = "";
@@ -21,25 +47,5 @@
 			document.getElementById(id).width = width + "px";
 		}
 	</script>
-</head>
-
-<body>
-	<header>
-		<h1>Game</h1>
-	</header>
-	<div class="mainbody">
-		<div class="col1">
-			<div>
-				<iframe id="content" name="content" marginheight="0" frameborder="0" onload="autoResize(this.id);"></iframe>
-			</div>
-		</div>
-		<div class="col2">
-			<ul>
-				<li><a href="breakout\breakout.html" target="content">Breakout</a></li>
-				<li><a href="snake\snake.html" target="content">Snake</a></li>
-				<li><a href="tetris\tetris.html" target="content">Tetris</a></li>
-			</ul>
-		</div>
-	</div>
 </body>
 </html>
