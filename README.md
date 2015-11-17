@@ -1,4 +1,4 @@
-## p5.js projects
+## Classic Game Clones
 
 These projects are web apps made with p5.js. So far, there are a few classic game clones:
 
